@@ -1,0 +1,12 @@
+{
+  "name": "MTS_3",
+  "short_name": "MTS_3",
+  "id": "com.example.gamename",
+  "description": "",
+  "orientation": "any",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "categories": ["games", "entertainment"],
+  "icons": []
+}

@@ -27,7 +27,7 @@ if (isConditionTrue_0) {
 }
 
 
-};gdjs.evtsExt__GamejoltAPI__CallGamejolt.userFunc0x837130 = function GDJSInlineCode(runtimeScene, eventsFunctionContext) {
+};gdjs.evtsExt__GamejoltAPI__CallGamejolt.userFunc0xb48b38 = function GDJSInlineCode(runtimeScene, eventsFunctionContext) {
 "use strict";
     let global = runtimeScene.getGame().getVariables().get("__GamejoltAPI");
 
@@ -117,7 +117,7 @@ gdjs.evtsExt__GamejoltAPI__CallGamejolt.eventsList0(runtimeScene, eventsFunction
 {
 
 
-gdjs.evtsExt__GamejoltAPI__CallGamejolt.userFunc0x837130(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+gdjs.evtsExt__GamejoltAPI__CallGamejolt.userFunc0xb48b38(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 

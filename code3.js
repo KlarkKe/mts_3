@@ -41,7 +41,7 @@ if (isConditionTrue_0) {
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(14050284);
+{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(10740300);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(runtimeScene.getObjects("Transition"), gdjs.LeaderboardCode.GDTransitionObjects2);
@@ -67,7 +67,7 @@ gdjs.copyArray(runtimeScene.getObjects("Transition"), gdjs.LeaderboardCode.GDTra
 }
 
 
-};gdjs.LeaderboardCode.asyncCallback14052620 = function (runtimeScene, asyncObjectsList) {
+};gdjs.LeaderboardCode.asyncCallback10474684 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.LeaderboardCode.localVariables);
 {gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, gdjs.evtTools.variable.getVariableString(runtimeScene.getScene().getVariables().get("NextScene")), false);
 }gdjs.LeaderboardCode.localVariables.length = 0;
@@ -81,7 +81,7 @@ gdjs.LeaderboardCode.eventsList2 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.LeaderboardCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5), (runtimeScene) => (gdjs.LeaderboardCode.asyncCallback14052620(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5), (runtimeScene) => (gdjs.LeaderboardCode.asyncCallback10474684(runtimeScene, asyncObjectsList)));
 }
 }
 
@@ -95,7 +95,7 @@ runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5)
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(14052348);
+{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(10227780);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(runtimeScene.getObjects("Transition"), gdjs.LeaderboardCode.GDTransitionObjects2);

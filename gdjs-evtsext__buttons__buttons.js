@@ -209,7 +209,7 @@ gdjs.copyArray(gdjs.evtsExt__Buttons__Buttons.Buttons.prototype.doStepPreEventsC
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13441780);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(14487748);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(gdjs.evtsExt__Buttons__Buttons.Buttons.prototype.doStepPreEventsContext.GDObjectObjects2, gdjs.evtsExt__Buttons__Buttons.Buttons.prototype.doStepPreEventsContext.GDObjectObjects3);
@@ -242,7 +242,7 @@ gdjs.copyArray(gdjs.evtsExt__Buttons__Buttons.Buttons.prototype.doStepPreEventsC
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13444108);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(14499636);
 }
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
@@ -443,7 +443,7 @@ isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.input.isMouseButtonPressed(runtimeScene, "Left");
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13451660);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(14410364);
 }
 }
 if (isConditionTrue_0) {
@@ -764,7 +764,7 @@ isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.input.isMouseButtonPressed(runtimeScene, "Left");
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13466980);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(10133420);
 }
 }
 if (isConditionTrue_0) {
@@ -1017,7 +1017,7 @@ isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.input.isMouseButtonPressed(runtimeScene, "Left");
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13469940);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(10136708);
 }
 }
 if (isConditionTrue_0) {
@@ -1171,7 +1171,7 @@ isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.input.isMouseButtonPressed(runtimeScene, "Left");
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13472460);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(10139076);
 }
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
@@ -1415,7 +1415,7 @@ isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.input.isMouseButtonPressed(runtimeScene, "Left");
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13477884);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(10144988);
 }
 }
 if (isConditionTrue_0) {
@@ -2105,7 +2105,7 @@ if (isConditionTrue_0) {
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13495004);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(10165892);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(gdjs.evtsExt__Buttons__Buttons.Buttons.prototype.AddBitmapTextObjectContext.GDObjectObjects2, gdjs.evtsExt__Buttons__Buttons.Buttons.prototype.AddBitmapTextObjectContext.GDObjectObjects3);

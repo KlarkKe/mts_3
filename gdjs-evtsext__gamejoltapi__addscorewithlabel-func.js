@@ -98,7 +98,7 @@ gdjs.evtsExt__GamejoltAPI__AddScoreWithLabel.eventsList1(runtimeScene, eventsFun
 }
 
 
-};gdjs.evtsExt__GamejoltAPI__AddScoreWithLabel.asyncCallback13170380 = function (runtimeScene, eventsFunctionContext, asyncObjectsList) {
+};gdjs.evtsExt__GamejoltAPI__AddScoreWithLabel.asyncCallback14246924 = function (runtimeScene, eventsFunctionContext, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(eventsFunctionContext.localVariables);
 {gdjs.evtTools.common.resolveAsyncEventsFunction((typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined));
 }eventsFunctionContext.localVariables.length = 0;
@@ -112,7 +112,7 @@ gdjs.evtsExt__GamejoltAPI__AddScoreWithLabel.eventsList3 = function(runtimeScene
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(eventsFunctionContext.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtsExt__GamejoltAPI__CallGamejolt.func(runtimeScene, "scores/add", "", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), (runtimeScene) => (gdjs.evtsExt__GamejoltAPI__AddScoreWithLabel.asyncCallback13170380(runtimeScene, eventsFunctionContext, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtsExt__GamejoltAPI__CallGamejolt.func(runtimeScene, "scores/add", "", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), (runtimeScene) => (gdjs.evtsExt__GamejoltAPI__AddScoreWithLabel.asyncCallback14246924(runtimeScene, eventsFunctionContext, asyncObjectsList)));
 }
 }
 

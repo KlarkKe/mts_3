@@ -2,12 +2,12 @@ gdjs.LeaderboardCode = {};
 gdjs.LeaderboardCode.localVariables = [];
 gdjs.LeaderboardCode.GDld_9595bgObjects1= [];
 gdjs.LeaderboardCode.GDld_9595bgObjects2= [];
-gdjs.LeaderboardCode.GDBackButtonOutLBObjects1= [];
-gdjs.LeaderboardCode.GDBackButtonOutLBObjects2= [];
-gdjs.LeaderboardCode.GDPlayerScoreTextObjects1= [];
-gdjs.LeaderboardCode.GDPlayerScoreTextObjects2= [];
+gdjs.LeaderboardCode.GDback_9595buttonObjects1= [];
+gdjs.LeaderboardCode.GDback_9595buttonObjects2= [];
 gdjs.LeaderboardCode.GDPlayerNameTextObjects1= [];
 gdjs.LeaderboardCode.GDPlayerNameTextObjects2= [];
+gdjs.LeaderboardCode.GDPlayerScoreTextObjects1= [];
+gdjs.LeaderboardCode.GDPlayerScoreTextObjects2= [];
 gdjs.LeaderboardCode.GD_95951Objects1= [];
 gdjs.LeaderboardCode.GD_95951Objects2= [];
 gdjs.LeaderboardCode.GD_95952Objects1= [];
@@ -34,27 +34,44 @@ gdjs.LeaderboardCode.GDTransitionObjects1= [];
 gdjs.LeaderboardCode.GDTransitionObjects2= [];
 
 
-gdjs.LeaderboardCode.mapOfGDgdjs_9546LeaderboardCode_9546GDBackButtonOutLBObjects1Objects = Hashtable.newFrom({"BackButtonOutLB": gdjs.LeaderboardCode.GDBackButtonOutLBObjects1});
+gdjs.LeaderboardCode.mapOfGDgdjs_9546LeaderboardCode_9546GDPlayerNameTextObjects2Objects = Hashtable.newFrom({"PlayerNameText": gdjs.LeaderboardCode.GDPlayerNameTextObjects2});
+gdjs.LeaderboardCode.mapOfGDgdjs_9546LeaderboardCode_9546GDPlayerScoreTextObjects2Objects = Hashtable.newFrom({"PlayerScoreText": gdjs.LeaderboardCode.GDPlayerScoreTextObjects2});
 gdjs.LeaderboardCode.eventsList0 = function(runtimeScene) {
+
+};gdjs.LeaderboardCode.eventsList1 = function(runtimeScene) {
 
 {
 
+gdjs.copyArray(runtimeScene.getObjects("back_button"), gdjs.LeaderboardCode.GDback_9595buttonObjects1);
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-isConditionTrue_0 = gdjs.evtTools.input.isMouseButtonReleased(runtimeScene, "Left");
+for (var i = 0, k = 0, l = gdjs.LeaderboardCode.GDback_9595buttonObjects1.length;i<l;++i) {
+    if ( gdjs.LeaderboardCode.GDback_9595buttonObjects1[i].getBehavior("Buttons").Release((typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)) ) {
+        isConditionTrue_0 = true;
+        gdjs.LeaderboardCode.GDback_9595buttonObjects1[k] = gdjs.LeaderboardCode.GDback_9595buttonObjects1[i];
+        ++k;
+    }
+}
+gdjs.LeaderboardCode.GDback_9595buttonObjects1.length = k;
 if (isConditionTrue_0) {
-{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "Home", false);
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.LeaderboardCode.GDback_9595buttonObjects1.length;i<l;++i) {
+    if ( gdjs.LeaderboardCode.GDback_9595buttonObjects1[i].behaviorActivated("Buttons") ) {
+        isConditionTrue_0 = true;
+        gdjs.LeaderboardCode.GDback_9595buttonObjects1[k] = gdjs.LeaderboardCode.GDback_9595buttonObjects1[i];
+        ++k;
+    }
+}
+gdjs.LeaderboardCode.GDback_9595buttonObjects1.length = k;
+}
+if (isConditionTrue_0) {
+{gdjs.evtTools.variable.setVariableBoolean(runtimeScene.getScene().getVariables().get("ChangeScene"), true);
+}{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "Home", false);
 }}
 
 }
 
-
-};gdjs.LeaderboardCode.mapOfGDgdjs_9546LeaderboardCode_9546GDPlayerNameTextObjects2Objects = Hashtable.newFrom({"PlayerNameText": gdjs.LeaderboardCode.GDPlayerNameTextObjects2});
-gdjs.LeaderboardCode.mapOfGDgdjs_9546LeaderboardCode_9546GDPlayerScoreTextObjects2Objects = Hashtable.newFrom({"PlayerScoreText": gdjs.LeaderboardCode.GDPlayerScoreTextObjects2});
-gdjs.LeaderboardCode.eventsList1 = function(runtimeScene) {
-
-};gdjs.LeaderboardCode.eventsList2 = function(runtimeScene) {
 
 {
 
@@ -66,22 +83,6 @@ if (isConditionTrue_0) {
 {gdjs.evtTools.network.sendAsyncRequest("https://mts3-game.ru/getscores", "", "GET", "", runtimeScene.getScene().getVariables().getFromIndex(0), gdjs.VariablesContainer.badVariable);
 }{runtimeScene.getGame().getVariables().getFromIndex(7).setNumber(0);
 }}
-
-}
-
-
-{
-
-gdjs.copyArray(runtimeScene.getObjects("BackButtonOutLB"), gdjs.LeaderboardCode.GDBackButtonOutLBObjects1);
-
-let isConditionTrue_0 = false;
-isConditionTrue_0 = false;
-isConditionTrue_0 = gdjs.evtTools.input.cursorOnObject(gdjs.LeaderboardCode.mapOfGDgdjs_9546LeaderboardCode_9546GDBackButtonOutLBObjects1Objects, runtimeScene, true, false);
-if (isConditionTrue_0) {
-
-{ //Subevents
-gdjs.LeaderboardCode.eventsList0(runtimeScene);} //End of subevents
-}
 
 }
 
@@ -127,16 +128,6 @@ if (isConditionTrue_0)
 }
 
 
-{
-
-
-let isConditionTrue_0 = false;
-{
-}
-
-}
-
-
 };
 
 gdjs.LeaderboardCode.func = function(runtimeScene) {
@@ -144,12 +135,12 @@ runtimeScene.getOnceTriggers().startNewFrame();
 
 gdjs.LeaderboardCode.GDld_9595bgObjects1.length = 0;
 gdjs.LeaderboardCode.GDld_9595bgObjects2.length = 0;
-gdjs.LeaderboardCode.GDBackButtonOutLBObjects1.length = 0;
-gdjs.LeaderboardCode.GDBackButtonOutLBObjects2.length = 0;
-gdjs.LeaderboardCode.GDPlayerScoreTextObjects1.length = 0;
-gdjs.LeaderboardCode.GDPlayerScoreTextObjects2.length = 0;
+gdjs.LeaderboardCode.GDback_9595buttonObjects1.length = 0;
+gdjs.LeaderboardCode.GDback_9595buttonObjects2.length = 0;
 gdjs.LeaderboardCode.GDPlayerNameTextObjects1.length = 0;
 gdjs.LeaderboardCode.GDPlayerNameTextObjects2.length = 0;
+gdjs.LeaderboardCode.GDPlayerScoreTextObjects1.length = 0;
+gdjs.LeaderboardCode.GDPlayerScoreTextObjects2.length = 0;
 gdjs.LeaderboardCode.GD_95951Objects1.length = 0;
 gdjs.LeaderboardCode.GD_95951Objects2.length = 0;
 gdjs.LeaderboardCode.GD_95952Objects1.length = 0;
@@ -175,15 +166,15 @@ gdjs.LeaderboardCode.GDYellowBackgroundObjects2.length = 0;
 gdjs.LeaderboardCode.GDTransitionObjects1.length = 0;
 gdjs.LeaderboardCode.GDTransitionObjects2.length = 0;
 
-gdjs.LeaderboardCode.eventsList2(runtimeScene);
+gdjs.LeaderboardCode.eventsList1(runtimeScene);
 gdjs.LeaderboardCode.GDld_9595bgObjects1.length = 0;
 gdjs.LeaderboardCode.GDld_9595bgObjects2.length = 0;
-gdjs.LeaderboardCode.GDBackButtonOutLBObjects1.length = 0;
-gdjs.LeaderboardCode.GDBackButtonOutLBObjects2.length = 0;
-gdjs.LeaderboardCode.GDPlayerScoreTextObjects1.length = 0;
-gdjs.LeaderboardCode.GDPlayerScoreTextObjects2.length = 0;
+gdjs.LeaderboardCode.GDback_9595buttonObjects1.length = 0;
+gdjs.LeaderboardCode.GDback_9595buttonObjects2.length = 0;
 gdjs.LeaderboardCode.GDPlayerNameTextObjects1.length = 0;
 gdjs.LeaderboardCode.GDPlayerNameTextObjects2.length = 0;
+gdjs.LeaderboardCode.GDPlayerScoreTextObjects1.length = 0;
+gdjs.LeaderboardCode.GDPlayerScoreTextObjects2.length = 0;
 gdjs.LeaderboardCode.GD_95951Objects1.length = 0;
 gdjs.LeaderboardCode.GD_95951Objects2.length = 0;
 gdjs.LeaderboardCode.GD_95952Objects1.length = 0;

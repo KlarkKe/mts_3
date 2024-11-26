@@ -2,7 +2,7 @@
 gdjs.evtsExt__SineMovement__SineMovement = gdjs.evtsExt__SineMovement__SineMovement || {};
 
 /**
- * Behavior generated from Sine Movement (deprecated)
+ * Behavior generated from Sine Movement
  */
 gdjs.evtsExt__SineMovement__SineMovement.SineMovement = class SineMovement extends gdjs.RuntimeBehavior {
   constructor(instanceContainer, behaviorData, owner) {
@@ -16,35 +16,29 @@ gdjs.evtsExt__SineMovement__SineMovement.SineMovement = class SineMovement exten
       behaviorData.name
     );
     
-    this._behaviorData.HorizontalSpeed = behaviorData.HorizontalSpeed !== undefined ? behaviorData.HorizontalSpeed : Number("60") || 0;
-    this._behaviorData.VerticalSpeed = behaviorData.VerticalSpeed !== undefined ? behaviorData.VerticalSpeed : Number("60") || 0;
-    this._behaviorData.HorizontalDistance = behaviorData.HorizontalDistance !== undefined ? behaviorData.HorizontalDistance : Number("100") || 0;
-    this._behaviorData.VerticalDistance = behaviorData.VerticalDistance !== undefined ? behaviorData.VerticalDistance : Number("0") || 0;
-    this._behaviorData.CenterPointX = behaviorData.CenterPointX !== undefined ? behaviorData.CenterPointX : Number("0") || 0;
-    this._behaviorData.CenterPointY = behaviorData.CenterPointY !== undefined ? behaviorData.CenterPointY : Number("0") || 0;
-    this._behaviorData.SineProgressX = Number("0") || 0;
-    this._behaviorData.SineProgressY = Number("0") || 0;
+    this._behaviorData.SineSpeed = behaviorData.SineSpeed !== undefined ? behaviorData.SineSpeed : Number("60") || 0;
+    this._behaviorData.AmplitudeX = behaviorData.AmplitudeX !== undefined ? behaviorData.AmplitudeX : Number("100") || 0;
+    this._behaviorData.AmplitudeY = behaviorData.AmplitudeY !== undefined ? behaviorData.AmplitudeY : Number("0") || 0;
+    this._behaviorData.InitialX = Number("0") || 0;
+    this._behaviorData.InitialY = Number("0") || 0;
+    this._behaviorData.SineProgress = Number("0") || 0;
   }
 
   // Hot-reload:
   updateFromBehaviorData(oldBehaviorData, newBehaviorData) {
     
-    if (oldBehaviorData.HorizontalSpeed !== newBehaviorData.HorizontalSpeed)
-      this._behaviorData.HorizontalSpeed = newBehaviorData.HorizontalSpeed;
-    if (oldBehaviorData.VerticalSpeed !== newBehaviorData.VerticalSpeed)
-      this._behaviorData.VerticalSpeed = newBehaviorData.VerticalSpeed;
-    if (oldBehaviorData.HorizontalDistance !== newBehaviorData.HorizontalDistance)
-      this._behaviorData.HorizontalDistance = newBehaviorData.HorizontalDistance;
-    if (oldBehaviorData.VerticalDistance !== newBehaviorData.VerticalDistance)
-      this._behaviorData.VerticalDistance = newBehaviorData.VerticalDistance;
-    if (oldBehaviorData.CenterPointX !== newBehaviorData.CenterPointX)
-      this._behaviorData.CenterPointX = newBehaviorData.CenterPointX;
-    if (oldBehaviorData.CenterPointY !== newBehaviorData.CenterPointY)
-      this._behaviorData.CenterPointY = newBehaviorData.CenterPointY;
-    if (oldBehaviorData.SineProgressX !== newBehaviorData.SineProgressX)
-      this._behaviorData.SineProgressX = newBehaviorData.SineProgressX;
-    if (oldBehaviorData.SineProgressY !== newBehaviorData.SineProgressY)
-      this._behaviorData.SineProgressY = newBehaviorData.SineProgressY;
+    if (oldBehaviorData.SineSpeed !== newBehaviorData.SineSpeed)
+      this._behaviorData.SineSpeed = newBehaviorData.SineSpeed;
+    if (oldBehaviorData.AmplitudeX !== newBehaviorData.AmplitudeX)
+      this._behaviorData.AmplitudeX = newBehaviorData.AmplitudeX;
+    if (oldBehaviorData.AmplitudeY !== newBehaviorData.AmplitudeY)
+      this._behaviorData.AmplitudeY = newBehaviorData.AmplitudeY;
+    if (oldBehaviorData.InitialX !== newBehaviorData.InitialX)
+      this._behaviorData.InitialX = newBehaviorData.InitialX;
+    if (oldBehaviorData.InitialY !== newBehaviorData.InitialY)
+      this._behaviorData.InitialY = newBehaviorData.InitialY;
+    if (oldBehaviorData.SineProgress !== newBehaviorData.SineProgress)
+      this._behaviorData.SineProgress = newBehaviorData.SineProgress;
 
     return true;
   }
@@ -55,92 +49,74 @@ gdjs.evtsExt__SineMovement__SineMovement.SineMovement = class SineMovement exten
       ...super.getNetworkSyncData(),
       props: {
         
-    HorizontalSpeed: this._behaviorData.HorizontalSpeed,
-    VerticalSpeed: this._behaviorData.VerticalSpeed,
-    HorizontalDistance: this._behaviorData.HorizontalDistance,
-    VerticalDistance: this._behaviorData.VerticalDistance,
-    CenterPointX: this._behaviorData.CenterPointX,
-    CenterPointY: this._behaviorData.CenterPointY,
-    SineProgressX: this._behaviorData.SineProgressX,
-    SineProgressY: this._behaviorData.SineProgressY,
+    SineSpeed: this._behaviorData.SineSpeed,
+    AmplitudeX: this._behaviorData.AmplitudeX,
+    AmplitudeY: this._behaviorData.AmplitudeY,
+    InitialX: this._behaviorData.InitialX,
+    InitialY: this._behaviorData.InitialY,
+    SineProgress: this._behaviorData.SineProgress,
       }
     };
   }
   updateFromNetworkSyncData(networkSyncData) {
     super.updateFromNetworkSyncData(networkSyncData);
     
-    if (networkSyncData.props.HorizontalSpeed !== undefined)
-      this._behaviorData.HorizontalSpeed = networkSyncData.props.HorizontalSpeed;
-    if (networkSyncData.props.VerticalSpeed !== undefined)
-      this._behaviorData.VerticalSpeed = networkSyncData.props.VerticalSpeed;
-    if (networkSyncData.props.HorizontalDistance !== undefined)
-      this._behaviorData.HorizontalDistance = networkSyncData.props.HorizontalDistance;
-    if (networkSyncData.props.VerticalDistance !== undefined)
-      this._behaviorData.VerticalDistance = networkSyncData.props.VerticalDistance;
-    if (networkSyncData.props.CenterPointX !== undefined)
-      this._behaviorData.CenterPointX = networkSyncData.props.CenterPointX;
-    if (networkSyncData.props.CenterPointY !== undefined)
-      this._behaviorData.CenterPointY = networkSyncData.props.CenterPointY;
-    if (networkSyncData.props.SineProgressX !== undefined)
-      this._behaviorData.SineProgressX = networkSyncData.props.SineProgressX;
-    if (networkSyncData.props.SineProgressY !== undefined)
-      this._behaviorData.SineProgressY = networkSyncData.props.SineProgressY;
+    if (networkSyncData.props.SineSpeed !== undefined)
+      this._behaviorData.SineSpeed = networkSyncData.props.SineSpeed;
+    if (networkSyncData.props.AmplitudeX !== undefined)
+      this._behaviorData.AmplitudeX = networkSyncData.props.AmplitudeX;
+    if (networkSyncData.props.AmplitudeY !== undefined)
+      this._behaviorData.AmplitudeY = networkSyncData.props.AmplitudeY;
+    if (networkSyncData.props.InitialX !== undefined)
+      this._behaviorData.InitialX = networkSyncData.props.InitialX;
+    if (networkSyncData.props.InitialY !== undefined)
+      this._behaviorData.InitialY = networkSyncData.props.InitialY;
+    if (networkSyncData.props.SineProgress !== undefined)
+      this._behaviorData.SineProgress = networkSyncData.props.SineProgress;
   }
 
   // Properties:
   
-  _getHorizontalSpeed() {
-    return this._behaviorData.HorizontalSpeed !== undefined ? this._behaviorData.HorizontalSpeed : Number("60") || 0;
+  _getSineSpeed() {
+    return this._behaviorData.SineSpeed !== undefined ? this._behaviorData.SineSpeed : Number("60") || 0;
   }
-  _setHorizontalSpeed(newValue) {
-    this._behaviorData.HorizontalSpeed = newValue;
+  _setSineSpeed(newValue) {
+    this._behaviorData.SineSpeed = newValue;
   }
-  _getVerticalSpeed() {
-    return this._behaviorData.VerticalSpeed !== undefined ? this._behaviorData.VerticalSpeed : Number("60") || 0;
+  _getAmplitudeX() {
+    return this._behaviorData.AmplitudeX !== undefined ? this._behaviorData.AmplitudeX : Number("100") || 0;
   }
-  _setVerticalSpeed(newValue) {
-    this._behaviorData.VerticalSpeed = newValue;
+  _setAmplitudeX(newValue) {
+    this._behaviorData.AmplitudeX = newValue;
   }
-  _getHorizontalDistance() {
-    return this._behaviorData.HorizontalDistance !== undefined ? this._behaviorData.HorizontalDistance : Number("100") || 0;
+  _getAmplitudeY() {
+    return this._behaviorData.AmplitudeY !== undefined ? this._behaviorData.AmplitudeY : Number("0") || 0;
   }
-  _setHorizontalDistance(newValue) {
-    this._behaviorData.HorizontalDistance = newValue;
+  _setAmplitudeY(newValue) {
+    this._behaviorData.AmplitudeY = newValue;
   }
-  _getVerticalDistance() {
-    return this._behaviorData.VerticalDistance !== undefined ? this._behaviorData.VerticalDistance : Number("0") || 0;
+  _getInitialX() {
+    return this._behaviorData.InitialX !== undefined ? this._behaviorData.InitialX : Number("0") || 0;
   }
-  _setVerticalDistance(newValue) {
-    this._behaviorData.VerticalDistance = newValue;
+  _setInitialX(newValue) {
+    this._behaviorData.InitialX = newValue;
   }
-  _getCenterPointX() {
-    return this._behaviorData.CenterPointX !== undefined ? this._behaviorData.CenterPointX : Number("0") || 0;
+  _getInitialY() {
+    return this._behaviorData.InitialY !== undefined ? this._behaviorData.InitialY : Number("0") || 0;
   }
-  _setCenterPointX(newValue) {
-    this._behaviorData.CenterPointX = newValue;
+  _setInitialY(newValue) {
+    this._behaviorData.InitialY = newValue;
   }
-  _getCenterPointY() {
-    return this._behaviorData.CenterPointY !== undefined ? this._behaviorData.CenterPointY : Number("0") || 0;
+  _getSineProgress() {
+    return this._behaviorData.SineProgress !== undefined ? this._behaviorData.SineProgress : Number("0") || 0;
   }
-  _setCenterPointY(newValue) {
-    this._behaviorData.CenterPointY = newValue;
-  }
-  _getSineProgressX() {
-    return this._behaviorData.SineProgressX !== undefined ? this._behaviorData.SineProgressX : Number("0") || 0;
-  }
-  _setSineProgressX(newValue) {
-    this._behaviorData.SineProgressX = newValue;
-  }
-  _getSineProgressY() {
-    return this._behaviorData.SineProgressY !== undefined ? this._behaviorData.SineProgressY : Number("0") || 0;
-  }
-  _setSineProgressY(newValue) {
-    this._behaviorData.SineProgressY = newValue;
+  _setSineProgress(newValue) {
+    this._behaviorData.SineProgress = newValue;
   }
 }
 
 /**
- * Shared data generated from Sine Movement (deprecated)
+ * Shared data generated from Sine Movement
  */
 gdjs.evtsExt__SineMovement__SineMovement.SineMovement.SharedData = class SineMovementSharedData {
   constructor(sharedData) {
@@ -173,19 +149,12 @@ gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsC
 
 {
 
-
-
-}
-
-
-{
-
 gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1);
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
 for (var i = 0, k = 0, l = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length;i<l;++i) {
-    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getCenterPointX() == 0 ) {
+    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getInitialX() == 0 ) {
         isConditionTrue_0 = true;
         gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[k] = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i];
         ++k;
@@ -195,7 +164,7 @@ gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsC
 if (isConditionTrue_0) {
 isConditionTrue_0 = false;
 for (var i = 0, k = 0, l = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length;i<l;++i) {
-    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getCenterPointY() == 0 ) {
+    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getInitialY() == 0 ) {
         isConditionTrue_0 = true;
         gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[k] = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i];
         ++k;
@@ -206,41 +175,10 @@ gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsC
 if (isConditionTrue_0) {
 /* Reuse gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1 */
 {for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setCenterPointX((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getX()));
+    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setInitialX((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getX()));
 }
 }{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setCenterPointY((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getY()));
-}
-}}
-
-}
-
-
-{
-
-
-
-}
-
-
-{
-
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1);
-
-let isConditionTrue_0 = false;
-isConditionTrue_0 = false;
-for (var i = 0, k = 0, l = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length;i<l;++i) {
-    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getHorizontalDistance() != 0 ) {
-        isConditionTrue_0 = true;
-        gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[k] = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i];
-        ++k;
-    }
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length = k;
-if (isConditionTrue_0) {
-/* Reuse gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1 */
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].setX((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getCenterPointX()) + Math.cos(gdjs.toRad((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgressX()))) * (gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getHorizontalDistance()));
+    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setInitialY((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getY()));
 }
 }}
 
@@ -254,7 +192,7 @@ gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMov
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
 for (var i = 0, k = 0, l = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length;i<l;++i) {
-    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getVerticalDistance() != 0 ) {
+    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getAmplitudeX() > 0 ) {
         isConditionTrue_0 = true;
         gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[k] = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i];
         ++k;
@@ -264,7 +202,7 @@ gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsC
 if (isConditionTrue_0) {
 /* Reuse gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1 */
 {for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].setY((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getCenterPointY()) + Math.sin(gdjs.toRad((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgressY()))) * (gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getVerticalDistance()));
+    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].setX((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getInitialX()) + Math.cos(gdjs.toRad((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgress()))) * (gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getAmplitudeX()));
 }
 }}
 
@@ -273,7 +211,24 @@ if (isConditionTrue_0) {
 
 {
 
+gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1);
 
+let isConditionTrue_0 = false;
+isConditionTrue_0 = false;
+for (var i = 0, k = 0, l = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length;i<l;++i) {
+    if ( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getAmplitudeY() > 0 ) {
+        isConditionTrue_0 = true;
+        gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[k] = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i];
+        ++k;
+    }
+}
+gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length = k;
+if (isConditionTrue_0) {
+/* Reuse gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1 */
+{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length ;i < len;++i) {
+    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].setY((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getInitialY()) + Math.sin(gdjs.toRad((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgress()))) * (gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getAmplitudeY()));
+}
+}}
 
 }
 
@@ -285,21 +240,7 @@ let isConditionTrue_0 = false;
 {
 gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1);
 {for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setSineProgressX(gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgressX() + ((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getHorizontalSpeed()) * gdjs.evtTools.runtimeScene.getElapsedTimeInSeconds(runtimeScene)));
-}
-}}
-
-}
-
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setSineProgressY(gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgressY() + ((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getVerticalSpeed()) * gdjs.evtTools.runtimeScene.getElapsedTimeInSeconds(runtimeScene)));
+    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setSineProgress(gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgress() + ((gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineSpeed()) * gdjs.evtTools.runtimeScene.getElapsedTimeInSeconds(runtimeScene)));
 }
 }}
 
@@ -376,1416 +317,6 @@ gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsC
 gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.eventsList0(runtimeScene, eventsFunctionContext);
 gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects1.length = 0;
 gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.doStepPreEventsContext.GDObjectObjects2.length = 0;
-
-
-return;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgressY()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressY = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressYContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getSineProgressX()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressX = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SineProgressXContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getHorizontalSpeed()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeed = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalSpeedContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getVerticalSpeed()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeed = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalSpeedContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getHorizontalDistance()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistance = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.HorizontalDistanceContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getVerticalDistance()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistance = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.VerticalDistanceContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getCenterPointX()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterX = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterXContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects1);
-{if (typeof eventsFunctionContext !== 'undefined') { eventsFunctionContext.returnValue = (( gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects1.length === 0 ) ? 0 :gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects1[0].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._getCenterPointY()); }}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterY = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.CenterYContext.GDObjectObjects2.length = 0;
-
-
-return Number(eventsFunctionContext.returnValue) || 0;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setCenterPointY((typeof eventsFunctionContext !== 'undefined' ? Number(eventsFunctionContext.getArgument("Value")) || 0 : 0));
-}
-}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterY = function(Value, parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-if (argName === "Value") return Value;
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterYContext.GDObjectObjects2.length = 0;
-
-
-return;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setCenterPointX((typeof eventsFunctionContext !== 'undefined' ? Number(eventsFunctionContext.getArgument("Value")) || 0 : 0));
-}
-}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterX = function(Value, parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-if (argName === "Value") return Value;
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetCenterXContext.GDObjectObjects2.length = 0;
-
-
-return;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setHorizontalDistance((typeof eventsFunctionContext !== 'undefined' ? Number(eventsFunctionContext.getArgument("Value")) || 0 : 0));
-}
-}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistance = function(Value, parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-if (argName === "Value") return Value;
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalDistanceContext.GDObjectObjects2.length = 0;
-
-
-return;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setVerticalDistance((typeof eventsFunctionContext !== 'undefined' ? Number(eventsFunctionContext.getArgument("Value")) || 0 : 0));
-}
-}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistance = function(Value, parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-if (argName === "Value") return Value;
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalDistanceContext.GDObjectObjects2.length = 0;
-
-
-return;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setHorizontalSpeed((typeof eventsFunctionContext !== 'undefined' ? Number(eventsFunctionContext.getArgument("Value")) || 0 : 0));
-}
-}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeed = function(Value, parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-if (argName === "Value") return Value;
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetHorizontalSpeedContext.GDObjectObjects2.length = 0;
-
-
-return;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setVerticalSpeed((typeof eventsFunctionContext !== 'undefined' ? Number(eventsFunctionContext.getArgument("Value")) || 0 : 0));
-}
-}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeed = function(Value, parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-if (argName === "Value") return Value;
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.SetVerticalSpeedContext.GDObjectObjects2.length = 0;
-
-
-return;
-}
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext = {};
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1= [];
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects2= [];
-
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.eventsList0 = function(runtimeScene, eventsFunctionContext) {
-
-{
-
-
-let isConditionTrue_0 = false;
-{
-gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1);
-{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setSineProgressX(0);
-}
-}{for(var i = 0, len = gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1.length ;i < len;++i) {
-    gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1[i].getBehavior(eventsFunctionContext.getBehaviorName("Behavior"))._setSineProgressY(0);
-}
-}}
-
-}
-
-
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCounters = function(parentEventsFunctionContext) {
-
-var that = this;
-var runtimeScene = this._runtimeScene;
-var thisObjectList = [this.owner];
-var Object = Hashtable.newFrom({Object: thisObjectList});
-var Behavior = this.name;
-var eventsFunctionContext = {
-  _objectsMap: {
-"Object": Object
-},
-  _objectArraysMap: {
-"Object": thisObjectList
-},
-  _behaviorNamesMap: {
-"Behavior": Behavior
-},
-  globalVariablesForExtension: runtimeScene.getGame().getVariablesForExtension("SineMovement"),
-  sceneVariablesForExtension: runtimeScene.getScene().getVariablesForExtension("SineMovement"),
-  localVariables: [],
-  getObjects: function(objectName) {
-    return eventsFunctionContext._objectArraysMap[objectName] || [];
-  },
-  getObjectsLists: function(objectName) {
-    return eventsFunctionContext._objectsMap[objectName] || null;
-  },
-  getBehaviorName: function(behaviorName) {
-    return eventsFunctionContext._behaviorNamesMap[behaviorName] || behaviorName;
-  },
-  createObject: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    if (objectsList) {
-      const object = parentEventsFunctionContext ?
-        parentEventsFunctionContext.createObject(objectsList.firstKey()) :
-        runtimeScene.createObject(objectsList.firstKey());
-      if (object) {
-        objectsList.get(objectsList.firstKey()).push(object);
-        eventsFunctionContext._objectArraysMap[objectName].push(object);
-      }
-      return object;    }
-    return null;
-  },
-  getInstancesCountOnScene: function(objectName) {
-    const objectsList = eventsFunctionContext._objectsMap[objectName];
-    let count = 0;
-    if (objectsList) {
-      for(const objectName in objectsList.items)
-        count += parentEventsFunctionContext ?
-parentEventsFunctionContext.getInstancesCountOnScene(objectName) :
-        runtimeScene.getInstancesCountOnScene(objectName);
-    }
-    return count;
-  },
-  getLayer: function(layerName) {
-    return runtimeScene.getLayer(layerName);
-  },
-  getArgument: function(argName) {
-    return "";
-  },
-  getOnceTriggers: function() { return that._onceTriggers; }
-};
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects2.length = 0;
-
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.eventsList0(runtimeScene, eventsFunctionContext);
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects1.length = 0;
-gdjs.evtsExt__SineMovement__SineMovement.SineMovement.prototype.ResetSineCountersContext.GDObjectObjects2.length = 0;
 
 
 return;

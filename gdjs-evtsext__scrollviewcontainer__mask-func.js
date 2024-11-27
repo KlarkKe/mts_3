@@ -10,7 +10,7 @@ gdjs.evtsExt__ScrollViewContainer__Mask.GDMaskedObjects1= [];
 gdjs.evtsExt__ScrollViewContainer__Mask.GDMaskObjects1= [];
 
 
-gdjs.evtsExt__ScrollViewContainer__Mask.userFunc0x880bf0 = function GDJSInlineCode(runtimeScene, objects, eventsFunctionContext) {
+gdjs.evtsExt__ScrollViewContainer__Mask.userFunc0xae1fa8 = function GDJSInlineCode(runtimeScene, objects, eventsFunctionContext) {
 "use strict";
 const maskObject = eventsFunctionContext.getObjects("Mask")[0];
 if (!maskObject) return;
@@ -29,7 +29,7 @@ gdjs.evtsExt__ScrollViewContainer__Mask.eventsList0 = function(runtimeScene, eve
 
 
 var objects = [];
-gdjs.evtsExt__ScrollViewContainer__Mask.userFunc0x880bf0(runtimeScene, objects, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+gdjs.evtsExt__ScrollViewContainer__Mask.userFunc0xae1fa8(runtimeScene, objects, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 

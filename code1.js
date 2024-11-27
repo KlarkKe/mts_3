@@ -51,7 +51,7 @@ gdjs.HomeCode.eventsList0 = function(runtimeScene) {
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(14117060);
+{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(14224620);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(runtimeScene.getObjects("Transition"), gdjs.HomeCode.GDTransitionObjects2);
@@ -77,7 +77,7 @@ gdjs.copyArray(runtimeScene.getObjects("Transition"), gdjs.HomeCode.GDTransition
 }
 
 
-};gdjs.HomeCode.asyncCallback14121548 = function (runtimeScene, asyncObjectsList) {
+};gdjs.HomeCode.asyncCallback14226956 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.HomeCode.localVariables);
 {gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, gdjs.evtTools.variable.getVariableString(runtimeScene.getScene().getVariables().get("NextScene")), false);
 }gdjs.HomeCode.localVariables.length = 0;
@@ -91,7 +91,7 @@ gdjs.HomeCode.eventsList1 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.HomeCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5), (runtimeScene) => (gdjs.HomeCode.asyncCallback14121548(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5), (runtimeScene) => (gdjs.HomeCode.asyncCallback14226956(runtimeScene, asyncObjectsList)));
 }
 }
 
@@ -105,7 +105,7 @@ runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5)
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(14120020);
+{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(14226684);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(runtimeScene.getObjects("Transition"), gdjs.HomeCode.GDTransitionObjects2);
@@ -151,7 +151,7 @@ if (isConditionTrue_0) {
 }
 
 
-};gdjs.HomeCode.asyncCallback13716524 = function (runtimeScene, asyncObjectsList) {
+};gdjs.HomeCode.asyncCallback13806140 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.HomeCode.localVariables);
 gdjs.copyArray(runtimeScene.getObjects("Play"), gdjs.HomeCode.GDPlayObjects3);
 {for(var i = 0, len = gdjs.HomeCode.GDPlayObjects3.length ;i < len;++i) {
@@ -168,7 +168,7 @@ gdjs.HomeCode.eventsList4 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.HomeCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.2), (runtimeScene) => (gdjs.HomeCode.asyncCallback13716524(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.2), (runtimeScene) => (gdjs.HomeCode.asyncCallback13806140(runtimeScene, asyncObjectsList)));
 }
 }
 
@@ -182,7 +182,7 @@ runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.2)
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(13716284);
+{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(13805900);
 }
 if (isConditionTrue_0) {
 {gdjs.evtTools.camera.hideLayer(runtimeScene, "UI");

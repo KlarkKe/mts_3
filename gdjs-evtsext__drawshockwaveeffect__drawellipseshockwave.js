@@ -1452,7 +1452,7 @@ gdjs.evtsExt__DrawShockWaveEffect__DrawEllipseShockWave.DrawEllipseShockWave.pro
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13421924);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13512356);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__DrawShockWaveEffect__DrawEllipseShockWave.DrawEllipseShockWave.prototype.SetEndHeightContext.GDObjectObjects1);
@@ -1935,7 +1935,7 @@ gdjs.evtsExt__DrawShockWaveEffect__DrawEllipseShockWave.DrawEllipseShockWave.pro
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13429388);
+{isConditionTrue_0 = eventsFunctionContext.getOnceTriggers().triggerOnce(13519820);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(eventsFunctionContext.getObjects("Object"), gdjs.evtsExt__DrawShockWaveEffect__DrawEllipseShockWave.DrawEllipseShockWave.prototype.ChangeTypeContext.GDObjectObjects1);
